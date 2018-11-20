@@ -9,3 +9,5 @@ addons:
   chrome: stable
 script:
   - npm test
+after_success:
+  - npm run coveralls
