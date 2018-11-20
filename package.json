@@ -1,0 +1,73 @@
+{
+  "name": "curry-arity",
+  "version": "1.0.0",
+  "description": "Tiny curry() and curryN() functions. Resulting functions will have the correct arity (length).",
+  "main": "dist/curryarity.cjs.js",
+  "module": "src/index.js",
+  "unpkg": "dist/curryarity.min.js",
+  "jsdelivr": "dist/curryarity.min.js",
+  "files": [
+    "dist",
+    "src",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "minify": "minify dist/curryarity.js -d --out-file dist/curryarity.min.js",
+    "prebuild": "rimraf dist dev coverage && eslint . -f tap --max-warnings 0",
+    "build": "rollup -c && npm run minify",
+    "test": "npm run build && npm run test:cjs && npm run test:iife && npm run test:bundle",
+    "test:cjs": "mocha -r @babel/register",
+    "test:iife": "karma start karma.iife.conf.js --single-run --browsers ChromeHeadless",
+    "test:bundle": "karma start karma.bundle.conf.js --single-run --browsers ChromeHeadless",
+    "dev:chrome": "karma start karma.dev.conf.js --single-run=false --browsers Chrome",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
+  },
+  "author": "Milos Djermanovic <milos.djermanovic@gmail.com>",
+  "license": "MIT",
+  "repository": "mdjermanovic/curry-arity",
+  "homepage": "https://github.com/mdjermanovic/curry-arity",
+  "bugs": "https://github.com/mdjermanovic/curry-arity/issues",
+  "engines": {
+    "node": ">=6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/plugin-transform-modules-commonjs": "^7.1.0",
+    "@babel/register": "^7.0.0",
+    "babel-minify": "^0.5.0",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.2",
+    "eslint": "^5.9.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "karma": "^3.1.1",
+    "karma-babel-preprocessor": "^8.0.0-beta.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.2",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.5",
+    "mocha": "^5.2.0",
+    "prettier": "^1.15.2",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.67.3",
+    "rollup-plugin-istanbul": "^2.0.1",
+    "rollup-plugin-multi-entry": "^2.0.2",
+    "rollup-plugin-node-resolve": "^3.4.0"
+  },
+  "keywords": [
+    "curry",
+    "curryN",
+    "arity",
+    "length",
+    "function.length",
+    "function",
+    "functions",
+    "currying",
+    "curried",
+    "correct",
+    "right",
+    "any",
+    "unlimited"
+  ]
+}
